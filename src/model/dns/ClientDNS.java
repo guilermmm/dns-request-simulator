@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 public class ClientDNS {
   static Scanner sc;
-  static boolean up;
 
   public static void init() {
     sc = new Scanner(System.in);
 
-    while (up) {
+    while (true) {
       String key = sc.nextLine();
       ServerDNS.search(key);
     }

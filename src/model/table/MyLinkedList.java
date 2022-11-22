@@ -70,17 +70,23 @@ public class MyLinkedList<K, T> {
   }
 
   public void delete(K key) {
+
+    if (first == null) {
+      return;
+    }
+
+    if (first.key == key) {
+      first = first.next;
+      return;
+    }
+
     Node<K, T> current = first;
-    Node<K, T> prev = null;
-    while (current != null) {
-      if (current.key == key) {
-        if (prev == null) {
-          first = current.next;
-        } else {
-          prev.next = current.next;
-        }
+
+    while (current.next != null) {
+      if (current.next.key == key) {
+        current.next = current.next.next;
+        return;
       }
-      prev = current;
       current = current.next;
     }
   }

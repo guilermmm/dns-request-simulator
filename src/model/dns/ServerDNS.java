@@ -13,16 +13,12 @@ import terminal.Terminal.Color;
 public class ServerDNS {
   static MyHashTable<String, String> hashTable;
   static Timer timer;
-  static int timerCount;
   static Scanner fileScanner;
-  static Scanner userScanner;
 
-  public static void init(int size) throws FileNotFoundException {
-    File file = new File("src/sites.txt");
+  public static void init(String file) throws FileNotFoundException {
     timer = new Timer();
-    fileScanner = new Scanner(file);
-    userScanner = new Scanner(System.in);
-    hashTable = new MyHashTable<>(size);
+    fileScanner = new Scanner(new File(file));
+    hashTable = new MyHashTable<>(10);
 
     timer.scheduleAtFixedRate(new TimerTask() {
       @Override
